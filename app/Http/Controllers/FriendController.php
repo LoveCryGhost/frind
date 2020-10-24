@@ -91,6 +91,7 @@ class FriendController
         $friend->save();
 
         //redirect重新導向到....
+        //並推送到Github
         return redirect( route('friend.index') );
     }
 }
