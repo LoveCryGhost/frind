@@ -1,27 +1,15 @@
-<h1>列表畫面</h1>
+{{--Form提交到哪裡, 由action = route 決定--}}
+<form method="post" action="{{route('friend.store')}}">
+    @csrf {{--防止攻擊的參數--}}
+{{--    @method('put')--}}
 
-<a href="{{route('friend.create')}}">新增</a>
-<br>
-<hr>
+    姓名：<input type="text" name="name" value="" /><br>
+    Email：<input type="text" name="email" value="" /><br>
+    電話：<input type="text" name="tel" value="" /><br>
+    其他：<input type="text" name="others" value="" /><br>
 
-@foreach($friends as $friend)
-{{--  {{dd($friends, $friend)}}--}}
-    姓名：{{$friend->name}}<br>
-    Email:{{$friend->email}}<br>
-    Tel:{{$friend->tel}}<br>
-    其他:{{$friend->others}}<br>
-    <a href="http://xyz.test/friend/{{$friend->id}}/edit" target="_blank">編輯-{{$friend->id}}</a>
-
-    {{--Delete=destroy--}}
-    <form method="post" action="{{route('friend.destroy',['friend'=>$friend->id])}}" >
-        @csrf
-        @method('delete')
-        <input type="submit" value="Submit-提交按鈕-刪除"/>
-        <button type="submit" >刪除</button>
-    </form>
-
-    <hr>
-@endforeach
-
-
+    {{--按鈕--}}
+    <a href="http://xyz.test/friend">放棄</a>
+    <button type="submit">Submit提交-儲存</button>
+</form>
 

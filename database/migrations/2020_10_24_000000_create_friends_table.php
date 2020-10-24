@@ -4,33 +4,31 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateFriendsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
+    //新增資料表
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('friends', function (Blueprint $table) {
+            //自動id
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+
+            $table->string('name'); //姓名
+            $table->string('email')->nullable(); //email - html文字方塊 input
+            $table->string('tel')->nullable(); //電話 - html文字方塊 input
+            $table->text('others')->nullable(); //其他 - html資料方塊 (textarea)
+
+            $table->timestamps(); //時間搓
+
+            //string -> 很少字元
+            //text -> 很多字元
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    //刪除資料表
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('friends');
     }
 }
